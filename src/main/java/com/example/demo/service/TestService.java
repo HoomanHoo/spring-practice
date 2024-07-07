@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TestService {
@@ -44,8 +45,12 @@ public class TestService {
         return this.findAllData();
     }
 
-    public List<?> updateUser(Long id){
-        testRepository.findById(id);
+    public List<?> updateUser(TestDto testDto){
+        Optional<TestDb> user = testRepository.findById(testDto.getId());
+        user.ifPresent(testDb -> {
+            testDb.setName(testDto.getName());
+            testRepository.save(testDb);
+        });
         return this.findAllData();
 
     }

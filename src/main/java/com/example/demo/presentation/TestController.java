@@ -27,12 +27,12 @@ public class TestController {
     }
 
     @PutMapping("/update")
-    public List<?> updateUser(Long id){
-        return testService.updateUser(id);
+    public List<?> updateUser(@RequestBody TestDto testDto){
+        return testService.updateUser(testDto);
     }
 
     @DeleteMapping("/delete")
-    public List<?> deleteUser(Long id){
-        return testService.deleteUser(id);
+    public List<?> deleteUser(@RequestBody TestDto testDto){
+        return testService.deleteUser(testDto.getId());
     }
 }
