@@ -21,8 +21,8 @@ public class TestService {
     public List<?> findAllData(){
         List<TestDto> testDtoList = new ArrayList<>();
         testRepository.findAll()   //Dto - Entity간의 데이터 매핑은 외부 라이브러리, 혹은 로직을 DTO 클래스나 Entity 클래스 내부에 만들 수도 있다.
-                .stream().
-                forEach(testDb -> {
+                .stream()
+                .forEach(testDb -> {
                     TestDto testDto = new TestDto();
                     testDto.setId(testDb.getId());
                     testDto.setName(testDb.getName());
